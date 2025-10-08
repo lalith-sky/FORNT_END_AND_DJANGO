@@ -31,6 +31,15 @@
   align-items: center;
   gap: 10px;
 }
+.username-link {
+  cursor: pointer;
+  color: #326273;
+  transition: color 0.2s;
+}
+.username-link:hover {
+  color: #5c9ead;
+}
+
 
 .user-profile img {
   border-radius: 50%;

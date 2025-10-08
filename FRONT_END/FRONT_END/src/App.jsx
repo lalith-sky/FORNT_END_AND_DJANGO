@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Sos from "./pages/Sos";
 import Heatmap from "./pages/Heatmap";
 import Messages from "./pages/Messages";
+import Account from "./pages/Account";
 
 
 export default function App() {
@@ -66,6 +67,10 @@ export default function App() {
               currentUsername={username}    // <-- Pass the username here
             />
           )}
+          {page === "account" && (
+            <Account onLogout={handleLogout} onNav={setPage} />
+          )}
+
           </>
       ) : (
         <>

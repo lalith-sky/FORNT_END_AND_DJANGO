@@ -38,8 +38,12 @@ export default function Home({ username, onLogout, onNav }) {
           <div className="search-profile-container">
             <input type="text" placeholder="Search..." className="search-bar" />
             <div className="user-profile">
-              <img src={profilePhoto} alt="User Avatar" />
-              <span>{username}</span>
+            <img src={profilePhoto} alt="User Avatar" />
+           <span
+            className="username-link"
+            onClick={() => onNav("account")}
+            title="Go to Account"
+           >{username}</span>
             </div>
           </div>
         </div>
