@@ -1,31 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MenuBar from "./MenuBar";
 import "../style/Home.css";
 import { FaBell, FaMapMarkerAlt, FaPhoneAlt, FaUserFriends } from "react-icons/fa";
 import axios from "axios";
 import profilePhoto from "../components/Profile_photo.webp";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "http://127.0.0.1:8000/api"; // include /api prefix
 
 export default function Home({ username, onLogout, onNav }) {
   const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchDashboard() {
-      try {
-        const token = localStorage.getItem("accessToken");
-        const response = await axios.get(`${API_URL}/api/dashboard/`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setDashboardData(response.data);
-      } catch (error) {
-        console.error("Failed to fetch dashboard data:", error);
-      }
+  // Fetch dashboard data
+  const fetchDashboard = useCallback(async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("accessToken");
+      if (!token) throw new Error("User not authenticated");
+
+      const response = await axios.get(`${API_URL}/dashboard/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setDashboardData(response.data);
+    } catch (error) {
+      console.error("Failed to fetch dashboard data:", error);
+    } finally {
+      setLoading(false);
     }
-    fetchDashboard();
   }, []);
 
-  if (!dashboardData) return <div>Loading dashboard...</div>;
+  useEffect(() => {
+    fetchDashboard();
+  }, [fetchDashboard]);
+
+  if (loading || !dashboardData) return <div>Loading dashboard...</div>;
 
   return (
     <>
@@ -38,12 +46,8 @@ export default function Home({ username, onLogout, onNav }) {
           <div className="search-profile-container">
             <input type="text" placeholder="Search..." className="search-bar" />
             <div className="user-profile">
-            <img src={profilePhoto} alt="User Avatar" />
-           <span
-            className="username-link"
-            onClick={() => onNav("account")}
-            title="Go to Account"
-           >{username}</span>
+              <img src={profilePhoto} alt="User Avatar" />
+              <span>{username}</span>
             </div>
           </div>
         </div>
@@ -86,7 +90,7 @@ export default function Home({ username, onLogout, onNav }) {
             <tbody>
               {dashboardData.recent_sos.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.date}</td>
+                  <td>{new Date(item.date).toLocaleString()}</td>
                   <td>{item.type}</td>
                   <td className={item.status.toLowerCase()}>{item.status}</td>
                 </tr>
