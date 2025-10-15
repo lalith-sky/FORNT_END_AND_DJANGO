@@ -5,16 +5,16 @@ import Home from "./pages/Home";
 import Sos from "./pages/Sos";
 import Heatmap from "./pages/Heatmap";
 import Messages from "./pages/Messages";
-import Account from "./pages/Account";
-
+import Contacts from "./pages/Contacts"; // Added Contacts page
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [page, setPage] = useState("home");
   const [authMode, setAuthMode] = useState("login");
-  const [userToken, setUserToken] = useState(""); // Set this after login
-  const [username, setUsername] = useState("");   // Set this after login
+  const [userToken, setUserToken] = useState(""); // JWT token after login
+  const [username, setUsername] = useState("");   // Logged-in username
 
+  // Registration callback
   const handleRegister = (username) => {
     alert("Registration successful! Please login.");
     setPage("auth");
@@ -22,26 +22,30 @@ export default function App() {
     return true;
   };
 
-  const handleLogin = (username,token) => {
-    setUser(username);           // for other components if still needed
-    setUsername(username);       // for messages currentUsername prop
-    setUserToken(token);         // for messages userToken prop
+  // Login callback
+  const handleLogin = (username, token) => {
+    setUser(username);
+    setUsername(username);
+    setUserToken(token);
     setPage("home");
     return true;
   };
 
+  // Logout callback
   const handleLogout = () => {
     setUser(null);
-    setUserToken("");     // <-- Add this
-    setUsername("");      // <-- Add this
+    setUserToken("");
+    setUsername("");
     setPage("home");
   };
 
+  // Open login/register page
   const openAuth = (mode) => {
     setAuthMode(mode);
     setPage("auth");
   };
 
+  // Go back to Home
   const handleBack = () => {
     setPage("home");
   };
@@ -51,27 +55,34 @@ export default function App() {
       {user ? (
         <>
           {page === "home" && (
-            <Home username={user} onLogout={handleLogout} onNav={setPage} />
+            <Home username={username} onLogout={handleLogout} onNav={setPage} />
           )}
           {page === "sos" && (
-            <Sos onBack={() => setPage("home")} onLogout={handleLogout} onNav={setPage} />
-          )}
-          {page === "heatmap" && (
-             <Heatmap onLogout={handleLogout} onNav={setPage} />
-          )}
-          {page === "messages" && (
-             <Messages
-              userToken={userToken}         // <-- Pass the token here
+            <Sos
+              onBack={handleBack}
               onLogout={handleLogout}
               onNav={setPage}
-              currentUsername={username}    // <-- Pass the username here
             />
           )}
-          {page === "account" && (
-            <Account onLogout={handleLogout} onNav={setPage} />
+          {page === "contacts" && (
+            <Contacts
+              onBack={handleBack}
+              onLogout={handleLogout}
+              onNav={setPage}
+            />
           )}
-
-          </>
+          {page === "heatmap" && (
+            <Heatmap onLogout={handleLogout} onNav={setPage} />
+          )}
+          {page === "messages" && (
+            <Messages
+              userToken={userToken}
+              onLogout={handleLogout}
+              onNav={setPage}
+              currentUsername={username}
+            />
+          )}
+        </>
       ) : (
         <>
           {page === "home" && (
