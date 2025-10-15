@@ -8,18 +8,12 @@ const MenuBar = ({ onLogout, onHome, onNav }) => {
     };
     const handleHomeClick = (e) => {
         e.preventDefault();
-        if (onHome) {
-            onHome();
-        }
-        if (onNav) {
-            onNav("home");
-        }
+        if (onHome) onHome();
+        if (onNav) onNav("home");
     };
     const handleNavClick = (target) => (e) => {
         e.preventDefault();
-        if (onNav) {
-            onNav(target);
-        }
+        if (onNav) onNav(target);
     };
 
     return (
@@ -53,6 +47,12 @@ const MenuBar = ({ onLogout, onHome, onNav }) => {
                   <a href="#" onClick={handleNavClick("alerts")}>
                     <span className="material-symbols-outlined">notifications</span>
                     <span>Alerts</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={handleNavClick("contacts")}>
+                    <span className="material-symbols-outlined">contacts</span>
+                    <span>Contacts</span>
                   </a>
                 </li>
                 <li>
