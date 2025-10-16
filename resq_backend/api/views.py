@@ -104,6 +104,7 @@ class MeView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+<<<<<<< HEAD
     def put(self, request):
         serializer = UserSerializer(request.user, data=request.data, partial=True)
         if serializer.is_valid():
@@ -111,6 +112,8 @@ class MeView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
+=======
+>>>>>>> 9a1c82249b487c366314a53e5814f2422cbf44cb
 # ---------- SOS CREATION ----------
 class SOSCreateView(APIView):
     permission_classes = [IsAuthenticated]

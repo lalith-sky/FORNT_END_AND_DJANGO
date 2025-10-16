@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import SOSReport, LocationShare, Alert, Contact, HeatmapPoint, UserContact, Message,UserProfile
 
 # ---------- USER SERIALIZER ----------
@@ -27,6 +28,27 @@ class UserSerializer(serializers.ModelSerializer):
         profile.address = profile_data.get('address', profile.address)
         profile.save()
         return instance
+=======
+from .models import SOSReport, LocationShare, Alert, Contact, HeatmapPoint, UserContact, Message
+
+# ---------- USER SERIALIZER ----------
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'email': {'required': True}
+        }
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
+        return user
+>>>>>>> 9a1c82249b487c366314a53e5814f2422cbf44cb
 
 # ---------- SOS REPORT SERIALIZER ----------
 class SOSReportSerializer(serializers.ModelSerializer):

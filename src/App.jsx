@@ -5,19 +5,14 @@ import Home from "./pages/Home";
 import Sos from "./pages/Sos";
 import Heatmap from "./pages/Heatmap";
 import Messages from "./pages/Messages";
-<<<<<<< HEAD
-import Contacts from "./pages/Contacts"; 
-import Account from "./pages/Account";
-=======
 import Contacts from "./pages/Contacts"; // Added Contacts page
->>>>>>> 9a1c82249b487c366314a53e5814f2422cbf44cb
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [page, setPage] = useState("home");
   const [authMode, setAuthMode] = useState("login");
   const [userToken, setUserToken] = useState(""); // JWT token after login
-  const [username, setUsername] = useState("");   // Logged-in username
+  const [username, setUsername] = useState(""); // Logged-in username
 
   // Registration callback
   const handleRegister = (username) => {
@@ -63,29 +58,11 @@ export default function App() {
             <Home username={username} onLogout={handleLogout} onNav={setPage} />
           )}
           {page === "sos" && (
-            <Sos
-              onBack={handleBack}
-              onLogout={handleLogout}
-              onNav={setPage}
-            />
+            <Sos onBack={handleBack} onLogout={handleLogout} onNav={setPage} />
           )}
           {page === "contacts" && (
-            <Contacts
-              onBack={handleBack}
-              onLogout={handleLogout}
-              onNav={setPage}
-            />
+            <Contacts onBack={handleBack} onLogout={handleLogout} onNav={setPage} />
           )}
-<<<<<<< HEAD
-          {page === "account" && (
-            <Account
-              onBack={handleBack}
-              onLogout={handleLogout}
-              onNav={setPage}
-            />
-          )}
-=======
->>>>>>> 9a1c82249b487c366314a53e5814f2422cbf44cb
           {page === "heatmap" && (
             <Heatmap onLogout={handleLogout} onNav={setPage} />
           )}

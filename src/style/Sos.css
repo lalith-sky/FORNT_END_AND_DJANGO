@@ -1,0 +1,91 @@
+.sos-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 36px 32px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sos-title {
+  color: #ee3b3b;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.sos-description {
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 32px;
+  width: 95%;
+}
+
+.sos-button {
+  background: #ee3b3b;
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  padding: 16px 46px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 18px rgba(238,59,59,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-bottom: 38px;
+  outline: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sos-button:hover {
+  background: #d13333;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.sos-button-icon {
+  font-size: 1.5rem;
+}
+
+.sos-info {
+  background: #fff3f3;
+  border-radius: 8px;
+  padding: 20px 18px;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.sos-info h3 {
+  color: #b22020;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.sos-info ul {
+  color: #a34545;
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+.sos-info li {
+  margin-bottom: 4px;
+  font-size: 0.98rem;
+}
+
+.back-button {
+  margin-top: 20px;
+  background: #666;
+  color: white;
+  padding: 10px 28px;
+  border:none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background: #444;
+}
