@@ -1,28 +1,120 @@
-<<<<<<< HEAD
-# FRONT_END_AND_DJANGO
+# ResQ - Emergency Response Platform
 
-This repository contains a React frontend (Vite + Tailwind) and a Django backend scaffold.
+A full-stack emergency response platform built with React (Vite + Tailwind CSS) frontend and Django backend.
 
-## Structure
+## 🚀 Features
 
-- `FRONT_END/` - React + Vite frontend
-- `resq_backend/` - Django backend
+- **Interactive Map Interface** - Built with React Leaflet for real-time location tracking
+- **Heatmap Visualization** - Emergency hotspot identification using leaflet.heat
+- **Responsive Design** - Modern UI with Tailwind CSS
+- **Smooth Animations** - Enhanced UX with GSAP
+- **RESTful API** - Django backend for data management
 
-## Contributors
+## 📁 Project Structure
+
+```
+.
+├── src/                    # React frontend source
+│   ├── components/        # Reusable React components
+│   ├── contexts/          # React context providers
+│   ├── pages/             # Page components
+│   ├── style/             # Styling files
+│   └── utils/             # Utility functions
+├── resq_backend/          # Django backend
+├── public/                # Static assets
+└── server/                # Server configuration
+```
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18.3** - UI library
+- **Vite 7.1** - Build tool and dev server
+- **Tailwind CSS 4.1** - Utility-first CSS framework
+- **React Leaflet** - Interactive maps
+- **GSAP** - Animation library
+- **Axios** - HTTP client
+- **React Icons** - Icon library
+
+### Backend
+- **Django** - Python web framework
+- **Django REST Framework** - API development
+
+## 📦 Installation
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Python (v3.8 or higher)
+- npm or yarn
+
+### Frontend Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linter
+npm run lint
+```
+
+### Backend Setup
+
+```bash
+# Navigate to backend directory
+cd resq_backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start Django server
+python manage.py runserver
+```
+
+## 🔧 Configuration
+
+1. Copy `.env.example` to `.env` and configure your environment variables
+2. Update API endpoints in the frontend configuration
+3. Configure Django settings in `resq_backend/settings.py`
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 👥 Contributors
 
 - ABharath007
 
-=======
-# React + Vite
+## 📄 License
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is open source and available under the MIT License.
 
-Currently, two official plugins are available:
+## 🐛 Bug Reports
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 9a1c82249b487c366314a53e5814f2422cbf44cb
+If you find a bug, please open an issue with detailed information about the problem.

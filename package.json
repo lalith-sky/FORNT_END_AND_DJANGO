@@ -1,13 +1,30 @@
 {
-  "name": "front-end",
+  "name": "resq-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Emergency response platform frontend built with React and Vite",
   "type": "module",
+  "author": "ABharath007",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/FRONT_END_AND_DJANGO.git"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "emergency-response",
+    "leaflet",
+    "tailwindcss",
+    "django"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
     "axios": "^1.12.2",
